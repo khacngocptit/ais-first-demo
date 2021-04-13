@@ -1,10 +1,10 @@
-import { Body, Injectable, UnauthorizedException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { PassportStrategy } from '@nestjs/passport';
-import { Model } from 'mongoose';
-import { Strategy } from 'passport-local';
-import { DB_USER, UserDocument } from '../../schema/user.schema';
-import { LoginRequestDto } from './dto/login-request.dto';
+import { Body, Injectable, UnauthorizedException } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { PassportStrategy } from "@nestjs/passport";
+import { Model } from "mongoose";
+import { Strategy } from "passport-local";
+import { DB_USER, UserDocument } from "../../entity/user.entity";
+import { LoginRequestDto } from "./dto/login-request.dto";
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {

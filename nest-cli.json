@@ -1,4 +1,10 @@
 {
-  "collection": "@nestjs/schematics",
-  "sourceRoot": "src"
+    "collection": "@nestjs/schematics",
+    "sourceRoot": "src",
+    "plugins": [{
+        "name": "@nestjs/swagger",
+        "options": {
+            "introspectComments": true
+        }
+    }]
 }

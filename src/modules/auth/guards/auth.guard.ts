@@ -1,5 +1,5 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { Injectable, CanActivate, ExecutionContext } from "@nestjs/common";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,5 +12,5 @@ export class AuthGuard implements CanActivate {
 }
 
 function validateRequest(request: any): boolean | Promise<boolean> | Observable<boolean> {
-  throw new Error('Function not implemented.');
+  throw new Error("Function not implemented.");
 }

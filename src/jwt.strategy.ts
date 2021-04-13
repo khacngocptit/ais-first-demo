@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { PassportStrategy } from '@nestjs/passport';
-import { Model } from 'mongoose';
-import { ExtractJwt, Strategy } from 'passport-jwt';
-import { AuthService } from './modules/auth/auth.service';
-import { Config } from './modules/auth/config';
-import { DB_USER, UserDocument } from './schema/user.schema';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { PassportStrategy } from "@nestjs/passport";
+import { Model } from "mongoose";
+import { ExtractJwt, Strategy } from "passport-jwt";
+import { AuthService } from "./modules/auth/auth.service";
+import { Config } from "./modules/auth/config";
+import { DB_USER, UserDocument } from "./entity/user.entity";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     }
 
     async validate(payload: any) {
-        const user = await this.userModel.findOne({_id: payload.sub});
+        const user = await this.userModel.findOne({ _id: payload.sub });
         return user;
     }
 }

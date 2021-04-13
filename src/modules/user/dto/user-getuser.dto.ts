@@ -1,12 +1,3 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { User } from "../../../entity/user.entity";
 
-export class GetUserDTO {
-  @ApiProperty()
-  readonly username: string;
-  @ApiProperty()
-  readonly password: string;
-  @ApiProperty()
-  readonly email: string;
-  @ApiProperty()
-  readonly phone: string;
-}
+export class GetUserDTO extends User { }

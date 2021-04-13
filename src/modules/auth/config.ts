@@ -1,3 +1,3 @@
 export const Config = {
-    JwtSecret : "bydktt"
-}
+    JwtSecret : "bydktt",
+};
