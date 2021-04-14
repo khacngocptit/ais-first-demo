@@ -21,18 +21,14 @@ export class UserService {
 
   // Create User
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const saltOrRounds = 10;
-    const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
-    createUserDto.password = hash;
-    const x = await this.userModel.findOne();
-    this.userModel.create();
-    x.save();
+
     const userExist = await this.userModel.exists({
       username: createUserDto.username,
     });
     if (userExist) {
       throw new HttpException("GoneException", HttpStatus.GONE);
     } else {
+      createUserDto.role = Role.User;
       return this.userModel.create(createUserDto);
     }
   }
@@ -55,18 +51,12 @@ export class UserService {
   // Update User
   async update(id: string, updateUser: UpdateUserDto, user: UserDocument): Promise<UserDocument> {
     if (user.role === Role.User) {
-      
       if (id === String(user._id)) {
-        console.log(user);
-        const saltOrRounds = 10;
-        const hash = await bcrypt.hash(updateUser.password, saltOrRounds);
-        updateUser.password = hash;
-        await this.userModel.updateOne({ _id: id }, updateUser);
-        return this.userModel.findById({ _id:id });
+        const result = this.userModel.findByIdAndUpdate(id, updateUser);
+        return result;
       }
       else {
         throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
-        
       }
     } else if (user.role === Role.Admin) {
       const result = this.userModel.findByIdAndUpdate(id, updateUser);

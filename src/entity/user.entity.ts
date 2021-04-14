@@ -39,3 +39,4 @@ UserSchema.methods.comparePassword = async function comparePassword(password: st
 export interface UserDocument extends User, Document {
   comparePassword(password: string): Promise<boolean>,
 }
+
