@@ -20,7 +20,7 @@ import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 import { RolesGuard } from "./guards/roles.guard";
 import { User, UserDocument } from "src/entity/user.entity";
 import { Request } from "express";
-import { ApiOkResponse, ApiProperty, ApiTags } from "@nestjs/swagger";
+import { ApiOkResponse, ApiTags } from "@nestjs/swagger";
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller("user")
 @ApiTags("user")

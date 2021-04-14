@@ -3,6 +3,8 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { AppModule } from "./app.module";
 import { AuthModule } from "./modules/auth/auth.module";
 import { UserModule } from "./modules/user/user.module";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require("dotenv").config({ path: `../${process.env.NODE_ENV}.env` });
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -28,6 +30,6 @@ async function bootstrap() {
     include: [AuthModule],
   });
   SwaggerModule.setup("api/auth", app, authDocument);
-  await app.listen(3000);
+  await app.listen(process.env.SERVER_POST);
 }
 bootstrap();
