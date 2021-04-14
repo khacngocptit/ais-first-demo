@@ -39,7 +39,7 @@ export class UserService {
         const res = await this.userModel.deleteOne({ _id: id });
         return res;
       } else {
-        throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
+        return null;
       }
     } 
     else if (user.role === Role.Admin) {
